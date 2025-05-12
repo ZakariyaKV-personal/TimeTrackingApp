@@ -1,0 +1,34 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+const cors = require('cors');
+const authRoutes = require('./routes/userRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+const timeEntryRoutes = require('./routes/timeEntryRoutes');
+const reportRoutes = require('./routes/reportRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const commonLeavesRoutes = require('./routes/commonLeaveRoutes');
+const leaveRoutes = require('./routes/leaveRoutes');
+const meetingRoutes = require('./routes/meetingRoutes');
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/timeentries', timeEntryRoutes);
+app.use('/api/reports', reportRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/commonleave', commonLeavesRoutes);
+app.use('/api/leaves', leaveRoutes);
+app.use('/api/meetings', meetingRoutes);
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
