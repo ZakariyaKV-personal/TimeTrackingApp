@@ -31,11 +31,11 @@ app.use('/api/leaves', leaveRoutes);
 app.use('/api/meetings', meetingRoutes);
 
 // ✅ Serve static files from React
-app.use(express.static(path.join(__dirname, '../Client/build')));
+app.use(express.static(path.join(__dirname, '../client')));
 
 // ✅ Fallback to React's index.html for non-API routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
 
 // Start the server
