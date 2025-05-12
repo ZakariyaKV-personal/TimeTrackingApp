@@ -432,7 +432,7 @@ const MeetingForm = () => {
                 </div>
                 <h2 style={{marginTop:'30px', marginBottom:'20px'}}>All Meetings</h2>
                 <div className="col-md-12 form-group">
-                {meetings[0]?.message == "Meeting not found" ? (
+                {meetings[0]?.message === "Meeting not found" ? (
                     <p>No Meetings available.</p>
                 ) : (
                 <CustomTable
