@@ -1,0 +1,21 @@
+# Exported from Render on 2025-05-12T06:45:41Z
+services:
+- type: web
+  name: TimeTrackingApp
+  runtime: node
+  repo: https://github.com/ZakariyaKV-personal/TimeTrackingApp
+  plan: free
+  envVars:
+  - key: PORT
+    sync: false
+  - key: JWT_SECRET
+    sync: false
+  - key: REFRESH_TOKEN_SECRET
+    sync: false
+  - key: ACCESS_TOKEN_SECRET
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: npm start
+  rootDir: server
+version: "1"
