@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // The base API URL: use the environment variable for production
-const API_BASE = process.env.REACT_APP_API_URL || "https://timetrackingapp.onrender.com";
+const API_BASE = process.env.REACT_APP_API_URL || "https://timetrackingapp.onrender.com/api/";
 
 // Create the axios instance with the dynamic base URL
 const api = axios.create({
