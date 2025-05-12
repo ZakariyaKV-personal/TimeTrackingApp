@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // ✅ Fallback to React's index.html for non-API routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
 });
 
 // Start the server
