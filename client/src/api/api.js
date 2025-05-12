@@ -1,8 +1,11 @@
-// api.js
 import axios from 'axios';
 
+// The base API URL: use the environment variable for production
+const API_BASE = process.env.REACT_APP_API_URL || "https://timetrackingapp.onrender.com";
+
+// Create the axios instance with the dynamic base URL
 const api = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: API_BASE,
 });
 
 // Set Authorization header globally if token exists in localStorage
@@ -11,15 +14,17 @@ if (token) {
     api.defaults.headers['Authorization'] = `Bearer ${token}`;
 }
 
-api.get('/api/auth/users') // This will cause a 404 error
+// Example GET request
+api.get('/api/auth/users') // Should use the dynamic baseURL now
   .catch(error => {
-    if(error.response.data.message === 'Token missing, please log in' || error.response.data.message === 'Invalid or expired token, please log in'){
+    if (error.response && (error.response.data.message === 'Token missing, please log in' || error.response.data.message === 'Invalid or expired token, please log in')) {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('refreshToken');
         localStorage.removeItem('userId');
         localStorage.removeItem('username');
     } 
 });
+
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
@@ -27,7 +32,7 @@ api.interceptors.response.use(
 
         if (error.response.status === 401 && localStorage.getItem('refreshToken')) {
             try {
-                const { data } = await axios.post('http://localhost:5000/api/auth/token', {
+                const { data } = await axios.post(`${API_BASE}/api/auth/token`, {
                     token: localStorage.getItem('refreshToken')
                 });
 
