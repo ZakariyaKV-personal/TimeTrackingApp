@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path'); // ✅ Fix: import 'path' here
 require('dotenv').config();
 const cors = require('cors');
+
 const authRoutes = require('./routes/userRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const timeEntryRoutes = require('./routes/timeEntryRoutes');
@@ -18,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Routes
+// API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/timeentries', timeEntryRoutes);
@@ -28,7 +30,15 @@ app.use('/api/commonleave', commonLeavesRoutes);
 app.use('/api/leaves', leaveRoutes);
 app.use('/api/meetings', meetingRoutes);
 
+// ✅ Serve static files from React
+app.use(express.static(path.join(__dirname, '../Client/build')));
+
+// ✅ Fallback to React's index.html for non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Client/build', 'index.html'));
+});
+
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
