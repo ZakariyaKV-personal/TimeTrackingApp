@@ -28,6 +28,7 @@ const Project = {
     },
 
     findAll: (domain, callback) => {
+        console.log(domain);
         const query = 'SELECT * FROM "_projects" WHERE domain = $1';
         db.query(query, [domain], (err, result) => {
             if (err) return callback(err);
