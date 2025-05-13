@@ -13,11 +13,18 @@ const User = {
     findByEmail: (email) => {
         return new Promise((resolve, reject) => {
             db.query('SELECT * FROM users WHERE email = $1', [email], (err, results) => {
-                if (err) reject(err);
-                resolve(results.rows[0]); // Ensure you use 'rows' for PostgreSQL
+                if (err) {
+                    console.error('Database error:', err);
+                    reject(err);
+                }
+                if (results.rows.length === 0) {
+                    return resolve(null); // Handle no user found case
+                }
+                resolve(results.rows[0]); // PostgreSQL uses 'rows' for result data
             });
         });
     },
+    
 
     findById: (id, callback) => {
         return new Promise((resolve, reject) => {
