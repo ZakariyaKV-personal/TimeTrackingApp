@@ -95,6 +95,8 @@ const TimeEntry = {
         `;
         db.query(query, [month, year, userId], (err, result) => {
             if (err) return callback(err);
+            console.log(result.rows);
+            
             callback(null, result.rows);
         });
     }
