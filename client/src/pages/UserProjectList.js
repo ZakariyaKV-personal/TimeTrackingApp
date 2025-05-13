@@ -14,7 +14,7 @@ function UserProjects() {
     useEffect(() => {
         // Fetch tasks for a specific project
         const fetchTasksForProject = async (projectId) => {
-            const response = await fetch(`http://localhost:5000/api/tasks/usertasks/${user.id}?projectId=${projectId}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/usertasks/${user.id}?projectId=${projectId}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const tasks = await response.json();
@@ -40,7 +40,7 @@ function UserProjects() {
             }));
         };
         const fetchProjects = async () => {
-            const response = await fetch(`http://localhost:5000/api/projects/byid/${user.id}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/projects/byid/${user.id}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();

@@ -14,7 +14,7 @@ const Projects = () => {
     const [editingProjectId, setEditingProjectId] = useState(null);
     const [users, setUsers] = useState([]);
 
-    const serverUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
+    const serverUrl = process.env.REACT_APP_SERVER_URL || 'https://timetrackingapp.onrender.com';
     
     useEffect(() => {
         const fetchProjects = async () => {
@@ -27,7 +27,7 @@ const Projects = () => {
         };
         fetchProjects();
         const fetchUsers = async () => {
-            const response = await fetch(`http://localhost:5000/api/auth/users/`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/auth/users/`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const userData = await response.json();

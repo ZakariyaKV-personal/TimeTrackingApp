@@ -65,7 +65,7 @@ function Tasks() {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch(`http://localhost:5000/api/auth/users/`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/auth/users/`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const userData = await response.json();
@@ -73,7 +73,7 @@ function Tasks() {
         };
         
         const fetchProjects = async () => {
-            const response = await fetch(`http://localhost:5000/api/projects/${user.domain}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/projects/${user.domain}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const projectData = await response.json();
@@ -81,7 +81,7 @@ function Tasks() {
         };
 
         const fetchTasks = async () => {
-            const response = await fetch(`http://localhost:5000/api/tasks/alltasks/${user.domain}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/alltasks/${user.domain}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const taskData = await response.json();
@@ -141,7 +141,7 @@ function Tasks() {
         if (isEditing) {
             await handleUpdateTask(newTask.id);
         } else {
-            const response = await fetch('http://localhost:5000/api/tasks', {
+            const response = await fetch('https://timetrackingapp.onrender.com/api/tasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ function Tasks() {
     };
 
     const handleUpdateTask = async (taskId) => {
-        const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ function Tasks() {
     };
 
     const handleDeleteTask = async (taskId) => {
-        const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/${taskId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -20,7 +20,7 @@ const MeetingForm = () => {
     const [newGuestEmail, setNewGuestEmail] = useState('');
     const [formErrors, setFormErrors] = useState({});
     const [showGuests, setShowGuests] = useState(false);
-    const serverUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
+    const serverUrl = process.env.REACT_APP_SERVER_URL || 'https://timetrackingapp.onrender.com';
     
     useEffect(() => {
         const fetchUsersAndMeetings = async () => {

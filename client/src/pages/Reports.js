@@ -15,7 +15,7 @@ const Reports = () => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('http://localhost:5000/api/auth/users', {
+            const response = await fetch('https://timetrackingapp.onrender.com/api/auth/users', {
                 headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();
@@ -23,7 +23,7 @@ const Reports = () => {
         };
 
         const fetchProjects = async () => {
-            const response = await fetch(`http://localhost:5000/api/projects/${user.domain}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/projects/${user.domain}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();
@@ -43,7 +43,7 @@ const Reports = () => {
     useEffect(() => {
         const fetchReports = async () => {
             if (month && year && selectedUser) {
-                const response = await fetch(`http://localhost:5000/api/reports?month=${month}&year=${year}&user=${selectedUser}`, {
+                const response = await fetch(`https://timetrackingapp.onrender.com/api/reports?month=${month}&year=${year}&user=${selectedUser}`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
                 });
                 const data = await response.json();
@@ -56,7 +56,7 @@ const Reports = () => {
     const handleFetchReports = async (e) => {
         e.preventDefault();
         if (selectedUser) {
-            const response = await fetch(`http://localhost:5000/api/reports?month=${month}&year=${year}&user=${selectedUser}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/reports?month=${month}&year=${year}&user=${selectedUser}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();

@@ -8,7 +8,7 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');  // Default role
     const navigate = useNavigate();
-    const serverUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:5000';
+    const serverUrl = process.env.REACT_APP_SERVER_URL || 'https://timetrackingapp.onrender.com';
 
     // List of common domains to block
     const disallowedDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com'];

@@ -6,7 +6,7 @@ function Users() {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const response = await fetch('http://localhost:5000/api/auth/users', {
+            const response = await fetch('https://timetrackingapp.onrender.com/api/auth/users', {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();
@@ -19,7 +19,7 @@ function Users() {
     // Function to handle accept or decline actions
     const handleStatusUpdate = async (userId, status) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/auth/users/${userId}/status`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/auth/users/${userId}/status`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,

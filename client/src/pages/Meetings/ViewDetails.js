@@ -25,7 +25,7 @@ const MeetingDetail = () => {
 
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/auth/users", {
+                const response = await axios.get("https://timetrackingapp.onrender.com/api/auth/users", {
                     headers: { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
                 });
                 setUsers(response.data);

@@ -58,7 +58,7 @@ function UserTasks() {
     useEffect(() => {
         const fetchUserTasks = async () => {
         
-            const response = await fetch(`http://localhost:5000/api/tasks/usertasks/${user.id}?projectId=${projectId}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/usertasks/${user.id}?projectId=${projectId}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             
@@ -68,7 +68,7 @@ function UserTasks() {
         fetchUserTasks();
         
         const fetchProjects = async () => {
-            const response = await fetch(`http://localhost:5000/api/projects/byid/${user.id}`, {
+            const response = await fetch(`https://timetrackingapp.onrender.com/api/projects/byid/${user.id}`, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` },
             });
             const data = await response.json();
@@ -114,7 +114,7 @@ function UserTasks() {
         };
     
         // Send the updated task data to the server
-        const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+        const response = await fetch(`https://timetrackingapp.onrender.com/api/tasks/${taskId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

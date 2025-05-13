@@ -24,9 +24,9 @@ function Tasks() {
             const headers = { Authorization: `Bearer ${token}` };
 
             const [usersRes, projectsRes, tasksRes] = await Promise.all([
-                fetch(`http://localhost:5000/api/auth/users/`, { headers }),
-                fetch(`http://localhost:5000/api/projects/${user.domain}`, { headers }),
-                fetch(`http://localhost:5000/api/tasks/alltasks/${user.domain}`, { headers }),
+                fetch(`https://timetrackingapp.onrender.com/api/auth/users/`, { headers }),
+                fetch(`https://timetrackingapp.onrender.com/api/projects/${user.domain}`, { headers }),
+                fetch(`https://timetrackingapp.onrender.com/api/tasks/alltasks/${user.domain}`, { headers }),
             ]);
 
             setUsers(await usersRes.json());
