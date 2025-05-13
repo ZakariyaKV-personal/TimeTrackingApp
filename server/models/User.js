@@ -12,12 +12,9 @@ const User = {
 
     findByEmail: (email) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+            db.query('SELECT * FROM users WHERE email = $1', [email], (err, results) => {
                 if (err) reject(err);
-                if (!results || results.length === 0) {
-                    return resolve(null);  // Return null if no user found
-                }
-                resolve(results[0]);
+                resolve(results.rows[0]); // Ensure you use 'rows' for PostgreSQL
             });
         });
     },
