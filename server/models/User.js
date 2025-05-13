@@ -14,6 +14,9 @@ const User = {
         return new Promise((resolve, reject) => {
             db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
                 if (err) reject(err);
+                if (!results || results.length === 0) {
+                    return resolve(null);  // Return null if no user found
+                }
                 resolve(results[0]);
             });
         });
