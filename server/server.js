@@ -30,12 +30,12 @@ app.use('/api/commonleave', commonLeavesRoutes);
 app.use('/api/leaves', leaveRoutes);
 app.use('/api/meetings', meetingRoutes);
 
-// ✅ Serve static files from React
-app.use(express.static(path.join(__dirname, '../client')));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/build')));
 
-// ✅ Fallback to React's index.html for non-API routes
+// For any routes not caught by API, send React index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 // Start the server
