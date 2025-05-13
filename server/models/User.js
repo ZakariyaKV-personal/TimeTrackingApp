@@ -12,7 +12,7 @@ const User = {
 
     findByEmail: (email) => {
         return new Promise((resolve, reject) => {
-            db.query('SELECT * FROM users WHERE email = $1', [email], (err, results) => {
+            db.query('SELECT * FROM _users WHERE email = $1', [email], (err, results) => {
                 if (err) {
                     console.error('Database error:', err);
                     reject(err);
