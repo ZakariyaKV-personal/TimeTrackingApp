@@ -60,7 +60,7 @@ function Navbar() {
                 <div className="sidebar-header">
                     <div className="d-flex justify-content-between">
                         <div className="logo">
-                            <Link to="#"><img src={`http://localhost:3000/assets/images/ANC-Logo.svg`} alt="Logo" srcset="" /></Link>
+                            <Link to="#"><img src={`https://timetrackingapp.onrender.com/assets/images/ANC-Logo.svg`} alt="Logo" srcset="" /></Link>
                         </div>
                         <div className="toggler">
                             <Link to="#" className="sidebar-hide d-xl-none d-block"><i className="bi bi-x bi-middle"></i></Link>
